@@ -1,8 +1,9 @@
 {
-  "name": "liontech.nyc",
+  "name": "react-client-boilerplate",
   "version": "1.0.0",
-  "description": "Lion Technology Solutions front facing SPA",
+  "description": "Lightweight React client boilerplate",
   "scripts": {
+    "postinstall": "mkdir public/assets/css public/assets/js public/assets/fonts",
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "NODE_ENV=production webpack -p --config=webpack.config.prod.js"
   },
