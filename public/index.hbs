@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{> seo }}
+        <title>React Client Boilerplate</title>
+        {{> prefetch }}
+        {{> plugins }}
+        {{#if server }}
+            <link rel="stylesheet" type="text/css" href="/assets/app.css">
+        {{/if}}
+    </head>
+    <body>
+        <div id="app-root">
+            {{#if server}}{{! Inject SSR only during prod-server operation }}
+                {{ render }}
+            {{/if}}
+        </div>
+        {{#if server}}{{! Inject SSR states only during prod-server }}
+        <script type="text/javascript">
+            window.__APOLLO_STATE__ = {{ client }}
+            window.__PRELOADED_STATE__ = {{ store }}
+        </script>{{! Inject app from server assets during prod-server }}
+        <script type="text/javascript" src="/assets/app.js"></script>
+        {{else}}{{! Provide empty mock otherwise }}
+        <script type="text/javascript">
+            window.__APOLLO_STATE__ = { }
+            window.__PRELOADED_STATE__ = { }
+        </script>
+        {{/if}}
+        {{#if dev}}
+            {{!-- Dev Only Tools --}}
+        {{/if}}
+    </body>
+</html>
