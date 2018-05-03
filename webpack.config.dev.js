@@ -12,7 +12,7 @@ const DIST   =  path.resolve(__dirname, 'dist')
 const PORT = process.env.PORT || 3000
 
 module.exports = {
-    devtool: 'cheap-eval-source-map',
+    devtool: 'inline-source-map',
     context: SRC,
     entry: { 
         app: SRC + '/app.js',
